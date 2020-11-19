@@ -1,0 +1,11 @@
+.chaptersContainer{
+    display:grid;
+    grid-template-areas: "header header"
+    "chaptersList chapterView";
+    grid-template-columns: 372px auto;
+    grid-template-rows: 100px auto;
+}
+
+.header{
+    grid-area:header;
+}
