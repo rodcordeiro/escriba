@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { FiEdit } from 'react-icons/fi';
 import './index.css';
 
@@ -6,9 +7,18 @@ import Header from '../../components/Header';
 import Chapter from '../../components/Chapter';
 
 export default function MainPage() {
+    const [id,setId] = useState(1)
+    const history = useHistory();
+
+    function goToCreatePage(){
+      history.push('/edit');
+    }
+    function goToEditPage(id){
+      history.push('/edit',{chapterId: id});
+    }
     return (
       <div className="chaptersContainer">
-          <Header page="main" className="header"/>
+          <Header page="main" action={goToCreatePage} className="header"/>
           <aside className="chapters">
             <Chapter  title="Este é o nome do capítulo" preview="Aqui vai o começo do capítulo Aqui vai o começo do capítulo"/>
             <Chapter  title="Este é o nome do capítulo" preview="Aqui vai o começo do capítulo Aqui vai o começo do capítulo"/>
@@ -28,7 +38,7 @@ export default function MainPage() {
             <Chapter  title="Este é o nome do capítulo" preview="Aqui vai o começo do capítulo Aqui vai o começo do capítulo"/>            
           </aside>
           <section className="chapter">
-            <FiEdit size={30} className="edit-icon"/>
+            <FiEdit size={30} className="edit-icon" onClick={()=>goToEditPage(id)}/>
             <h1>Chapter Title</h1>
             <p>Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem manda na minha terra sou euzis! Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem manda na minha terra sou euzis! Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem manda na minha terra sou euzis! Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem manda na minha terra sou euzis! Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.</p>
             <p>Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem manda na minha terra sou euzis! Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.</p>

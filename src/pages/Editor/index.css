@@ -1,0 +1,21 @@
+.editor{
+    width:90%;
+    margin: 20px auto;
+    color: #181818;
+}
+
+.titleInput,.titleInput:focus,.titleInput:active{
+    padding: 5px 10px;
+    font-size: 24px;
+    line-height: 24px;
+    border:none;
+    outline:none;
+    margin:5px;
+    background-color:#181818;
+    color: #f0f0f0;
+    width:100%;
+}
+
+.ck-content{
+    min-height:400px;
+}
