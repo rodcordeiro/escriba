@@ -13,16 +13,23 @@ export default function MainPage() {
     const history = useHistory();
     const [ chapters, setChapters ] = useState([]);
     const [ chapter, setChapter ] = useState({
-      "id": id,
       "title": "Escriba",
-       "text": "<h3>O que é o Escriba?</h3><p>O Escriba é um site desenvolvido por Rodrigo Cordeiro com o intuito de auxiliar no desenvolvimento de livros, servindo como ferramenta de escrita e permitindo seu acesso de qualquer dispositivo.</p><p>&nbsp;</p><p>&nbsp;</p>"
+      "text": "<h3>O que é o Escriba?</h3><p>O Escriba é um site desenvolvido por Rodrigo Cordeiro com o intuito de auxiliar no desenvolvimento de livros, servindo como ferramenta de escrita e permitindo seu acesso de qualquer dispositivo.</p><p>&nbsp;</p><p>&nbsp;</p>"
     });
 
     useEffect(() => {
       getChapters()
       handleChapterText()
+      
     },[chapter]);
     
+    function setDefaultChapter(){
+      setChapter({
+        "title": "Escriba",
+        "text": "<h3>O que é o Escriba?</h3><p>O Escriba é um site desenvolvido por Rodrigo Cordeiro com o intuito de auxiliar no desenvolvimento de livros, servindo como ferramenta de escrita e permitindo seu acesso de qualquer dispositivo.</p><p>&nbsp;</p><p>&nbsp;</p>"
+      })
+    }
+
     async function getChapter(id){
       let data = await api.get(`/chapters/${id}`)
         .then(response =>{
@@ -45,23 +52,20 @@ export default function MainPage() {
         )
     }
     function goToCreatePage(){
-      history.push('/edit');
+      history.push('/create');
     }
     function goToEditPage(id){
-      history.push('/edit',{id});
+      history.push('/edit',{chapterId:id});
     }
     async function handleDeleteChapter(id){
       await api.delete(`/chapters/${id}`)
         .then(response=>{
-          getChapters();
-          setChapter({
-            "title": "Chapter Title",
-            "text": "Here goes the chapter text!"
-          })
-          .catch(err=>{
-          })
-          throw new Error(err)
+          getChapters()
+          setDefaultChapter()
         })
+        .catch(err=>{
+            throw new Error(err)
+          })
     }
     function handleChapterText(){
       let chapterElement = document.getElementById('chapterText')

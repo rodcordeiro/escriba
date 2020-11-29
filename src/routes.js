@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import MainPage from './pages/Main';
 import EditorPage from './pages/Editor';
+import CreatorPage from './pages/Creator';
 
 export default function Routes() {
     return (
@@ -10,6 +11,7 @@ export default function Routes() {
           <Switch>
               <Route path="/" exact component={MainPage}/>
               <Route path="/edit" component={EditorPage}/>
+              <Route path="/create" component={CreatorPage}/>
           </Switch>
         </BrowserRouter>
     );
