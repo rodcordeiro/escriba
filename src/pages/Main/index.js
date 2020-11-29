@@ -4,12 +4,11 @@ import { FiEdit, FiTrash } from 'react-icons/fi';
 import './index.css';
 
 import Header from '../../components/Header';
-import Chapter from '../../components/Chapter';
 
 import api from '../../utils/api';
 
 export default function MainPage() {
-    const [id,setId] = useState();
+    const [id,setId] = useState(false);
     const history = useHistory();
     const [ chapters, setChapters ] = useState([]);
     const [ chapter, setChapter ] = useState({
@@ -19,8 +18,7 @@ export default function MainPage() {
 
     useEffect(() => {
       getChapters()
-      handleChapterText()
-      
+      handleChapterText()      
     },[chapter]);
     
     function setDefaultChapter(){
@@ -55,9 +53,11 @@ export default function MainPage() {
       history.push('/create');
     }
     function goToEditPage(id){
+      if(!id) return;
       history.push('/edit',{chapterId:id});
     }
     async function handleDeleteChapter(id){
+      if(!id) return;
       await api.delete(`/chapters/${id}`)
         .then(response=>{
           getChapters()
@@ -86,8 +86,8 @@ export default function MainPage() {
             
           </aside>
           <section className="chapter">
-            <FiEdit size={25} className="edit-icon" onClick={()=>goToEditPage(id)}/>
-            <FiTrash size={25} className="trash-icon" onClick={()=>handleDeleteChapter(id)}/>
+              <FiEdit size={25} className="edit-icon" onClick={()=>goToEditPage(id)} />
+              <FiTrash size={25} className="trash-icon" onClick={()=>handleDeleteChapter(id)}/>
             <h1>{chapter.title} </h1>
             <div id="chapterText"></div>
           </section>
