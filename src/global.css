@@ -12,3 +12,27 @@ body{
 *::-webkit-scrollbar{
  display: none;
 }
+
+:root {
+	--ck-color-base-foreground: 								#333333;
+	--ck-color-base-background: 								#181818;
+	--ck-color-base-border: 									rgba(255,255,255,0.1);
+	--ck-color-base-action: 									hsl(104, 44%, 48%);
+	--ck-color-base-focus: 										hsl(209, 92%, 70%);
+	--ck-color-base-text: 										#f4f4f4;
+	--ck-color-base-active: 									hsl(208, 88%, 52%);
+	--ck-color-base-active-focus:								hsl(208, 88%, 47%);
+	--ck-color-base-error:										hsl(15, 100%, 43%);
+
+	/* -- Generic colors ------------------------------------------------------------------------ */
+
+	--ck-color-focus-border-coordinates: 						208, 79%, 51%;
+	--ck-color-focus-border: 									hsl(var(--ck-color-focus-border-coordinates));
+	--ck-color-focus-outer-shadow:								hsl(207, 89%, 86%);
+	--ck-color-focus-disabled-shadow:							hsla(209, 90%, 72%,.3);
+	--ck-color-focus-error-shadow:								hsla(9,100%,56%,.3);
+	--ck-color-text: 											var(--ck-color-base-text);
+	--ck-color-shadow-drop: 									hsla(0, 0%, 0%, 0.15);
+	--ck-color-shadow-drop-active:								hsla(0, 0%, 0%, 0.2);
+    --ck-color-shadow-inner: 									hsla(0, 0%, 0%, 0.1);
+}

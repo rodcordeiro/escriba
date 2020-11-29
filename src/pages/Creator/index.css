@@ -20,9 +20,8 @@
 	--ck-color-shadow-drop: 									hsla(0, 0%, 0%, 0.15);
 	--ck-color-shadow-drop-active:								hsla(0, 0%, 0%, 0.2);
     --ck-color-shadow-inner: 									hsla(0, 0%, 0%, 0.1);
-
-
 }
+
 .editor{
     width:90%;
     margin: 20px auto;
@@ -42,7 +41,4 @@
 
 .ck-content{
     min-height:400px;
-}
-.ck-editor{
-    background: red;
 }
