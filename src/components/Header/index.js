@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiPenTool, FiPlusCircle, FiSave } from 'react-icons/fi';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './index.css';
 
