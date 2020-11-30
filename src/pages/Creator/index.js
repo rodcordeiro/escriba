@@ -27,7 +27,7 @@ export default function CreatorPage(props) {
     async function saveChapter(){
       await api.post('/chapters/create',chapterObj)
         .then(response=>{
-          alert(`Capítulo ${response.data.chapter.title} criado. ID:${response.data.chapter.id}`)
+          alert(`Capítulo ${response.data.chapter.title} criado.`)
           history.push('/');
         })
         .catch(err=>{
