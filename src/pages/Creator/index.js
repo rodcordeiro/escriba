@@ -9,6 +9,7 @@ import api from '../../utils/api';
 import "./index.css";
 
 export default function CreatorPage(props) {
+    const [token, setToken] = useState(false);  
     const [title, setTitle] = useState('');
     const [text,setText] = useState('');
     const [chapterObj, setChapterObj] = useState({
@@ -24,6 +25,7 @@ export default function CreatorPage(props) {
       })
     },[title,text])
 
+    
     async function saveChapter(){
       await api.post('/chapters/create',chapterObj)
         .then(response=>{
@@ -34,6 +36,7 @@ export default function CreatorPage(props) {
           throw new Error(err)
         })
     }
+
       return (
         <div className="App">
           
