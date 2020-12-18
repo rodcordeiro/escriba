@@ -9,6 +9,8 @@ import api from '../../utils/api';
 import "./index.css";
 
 export default function EditorPage(props) {
+  const [token, setToken] = useState(false);  
+  const [state, setState] = useState(false);  
   const [status,setStatus] = useState(false);
   const [id, setId] = useState(0);
   const [title, setTitle] = useState('');
@@ -16,6 +18,18 @@ export default function EditorPage(props) {
   const [chapterObj, setChapterObj] = useState({title,text})
   const history = useHistory();  
   
+  function getToken(){
+    if(!state){
+      setState(true)
+      let t = localStorage.getItem('authToken')
+      if(t){
+        setToken(t)
+      } else {
+        history.push('/login');
+      }
+    }
+  }
+  getToken()
   if(!status) {
     setStatus(true)
     const {chapterId} = props.location.state;
@@ -41,7 +55,9 @@ export default function EditorPage(props) {
   }
 
   async function updateChapter(){
-    await api.put(`/chapters/${id}`,chapterObj)
+    await api.put(`/chapters/${id}`,chapterObj,{headers:{
+      token
+    }})
     .then(response=>{
         alert(`Capítulo ${title} atualizado`)
         history.push('/');

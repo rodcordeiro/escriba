@@ -10,6 +10,7 @@ import "./index.css";
 
 export default function CreatorPage(props) {
     const [token, setToken] = useState(false);  
+    const [state, setState] = useState(false);  
     const [title, setTitle] = useState('');
     const [text,setText] = useState('');
     const [chapterObj, setChapterObj] = useState({
@@ -27,7 +28,9 @@ export default function CreatorPage(props) {
 
     
     async function saveChapter(){
-      await api.post('/chapters/create',chapterObj)
+      await api.post('/chapters/create',chapterObj,{headers:{
+        token
+      }})
         .then(response=>{
           alert(`Capítulo ${response.data.chapter.title} criado.`)
           history.push('/');
@@ -36,7 +39,18 @@ export default function CreatorPage(props) {
           throw new Error(err)
         })
     }
-
+    function getToken(){
+      if(!state){
+        setState(true)
+        let t = localStorage.getItem('authToken')
+        if(t){
+          setToken(t)
+        } else {
+          history.push('/login');
+        }
+      }
+    }
+    getToken()
       return (
         <div className="App">
           

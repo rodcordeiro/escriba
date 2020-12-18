@@ -1,62 +1,42 @@
-.chaptersContainer{
-    display:grid;
-    grid-template-areas: "header header"
-    "chaptersList chapterView";
-    grid-template-columns: 300px auto;
-    grid-template-rows: 100px auto;
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .header{
-    grid-area:header;
+    width: auto;
 }
-.chapters{
-    grid-area:chaptersList;
-    overflow-y: scroll;
-    height:100%;
-}
-.chapter-preview{
-    background: #3B3B3B;
-    border-radius: 10px;
-    padding: 5px 10px;
-    height:80px;
-    margin: 10px;
-}
-.chapter-preview h3{
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
 
+.formContainer{
+    /* background-color: aquamarine; */
+    display: flex;
+    margin: 5px auto;
+    flex-direction: column;
+    min-height: 400px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
 }
-.chapter{
-    grid-area:chapterView;
-    padding:15px 25px;   
+.formContainer input,.formContainer input:focus,.formContainer input:active{
+    width: 90%;
+    height: 30px;
+    line-height:  30px;
+    font-size:  18px;
+    padding: 5px 10px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    background-color: #3334;
+    color: white;
 }
-.chapter h1{
-    font-family: 'Roboto Mono', monospace;
-    padding: 20px;
-    text-align: center;
-    font-size:48px;
-}
-.chapter p{
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
-    text-align: justify;
-    padding: 5px;
-}
-.chapter p::first-letter{
-    padding-left: 20px;
-}
-.edit-icon{
-    opacity: 0.5;
-    position: relative;
-    top:30px;
-    left:92%;
-}
-.trash-icon{
-    opacity: 0.5;
-    position: relative;
-    top:30px;
-    left:93%;
+
+.formContainer button,.formContainer button:focus,.formContainer button:active{
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #333;
+    color:#f4f4f4;
+    
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import './index.css';
 
@@ -22,6 +22,7 @@ export default function LoginPage() {
     await api.post('/auth',userObj)
       .then(response=>{
         localStorage.setItem('authToken',response.data.token)
+        history.push('/')
       })
       .catch(err=>{
         console.log(err)
@@ -34,7 +35,7 @@ export default function LoginPage() {
     return (
       <div className="loginContainer" >
           <Header page="main" action={goToMainPage} className="header"/>
-          <form method="post" onSubmit={(e)=>handleLogin(e)}>
+          <form method="post" onSubmit={(e)=>handleLogin(e)} className="formContainer">
             <input 
               type="text"
               name="username"

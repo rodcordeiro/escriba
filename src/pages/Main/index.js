@@ -8,6 +8,8 @@ import Header from '../../components/Header';
 import api from '../../utils/api';
 
 export default function MainPage() {
+    const [token, setToken] = useState(false);  
+    const [state, setState] = useState(false);  
     const [id,setId] = useState(false);
     const history = useHistory();
     const [ chapters, setChapters ] = useState([]);
@@ -26,6 +28,17 @@ export default function MainPage() {
         "title": "Escriba",
         "text": "<h3>O que é o Escriba?</h3><p>O Escriba é um site desenvolvido por Rodrigo Cordeiro com o intuito de auxiliar no desenvolvimento de livros, servindo como ferramenta de escrita e permitindo seu acesso de qualquer dispositivo.</p><p>&nbsp;</p><p>&nbsp;</p>"
       })
+    }
+    function getToken(){
+      if(!state){
+        setState(true)
+        let t = localStorage.getItem('authToken')
+        if(t){
+          setToken(t)
+        } else {
+          history.push('/login');
+        }
+      }
     }
 
     async function getChapter(id){
@@ -58,7 +71,11 @@ export default function MainPage() {
     }
     async function handleDeleteChapter(id){
       if(!id) return;
-      await api.delete(`/chapters/${id}`)
+      getToken()
+      console.log(token)
+      await api.delete(`/chapters/${id}`,{headers:{
+        token
+      }})
         .then(response=>{
           getChapters()
           setDefaultChapter()
