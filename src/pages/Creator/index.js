@@ -28,7 +28,7 @@ export default function CreatorPage(props) {
 
     
     async function saveChapter(){
-      await api.post('/chapters/create',chapterObj,{headers:{
+      await api.post('/esb/chapters/create',chapterObj,{headers:{
         token
       }})
         .then(response=>{

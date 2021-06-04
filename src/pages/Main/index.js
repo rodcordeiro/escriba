@@ -42,7 +42,7 @@ export default function MainPage() {
     }
 
     async function getChapter(id){
-      let data = await api.get(`/chapters/${id}`)
+      let data = await api.get(`/esb/chapters/${id}`)
         .then(response =>{
           setId(response.data.id)
           setChapter(response.data)
@@ -54,7 +54,7 @@ export default function MainPage() {
       }
 
     async function getChapters(){
-      await api.get('/chapters')
+      await api.get('/esb/chapters')
         .then(res => {
           setChapters(res.data)
         })
@@ -73,7 +73,7 @@ export default function MainPage() {
       if(!id) return;
       getToken()
       console.log(token)
-      await api.delete(`/chapters/${id}`,{headers:{
+      await api.delete(`/esb/chapters/${id}`,{headers:{
         token
       }})
         .then(response=>{

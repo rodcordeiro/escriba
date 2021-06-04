@@ -19,7 +19,7 @@ export default function LoginPage() {
       password
     }
 
-    await api.post('/auth',userObj)
+    await api.post('/users/auth',userObj)
       .then(response=>{
         localStorage.setItem('authToken',response.data.token)
         history.push('/')

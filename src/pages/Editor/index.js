@@ -44,7 +44,7 @@ export default function EditorPage(props) {
   },[title,text])
 
   async function getChapter(id){
-    await api.get(`/chapters/${id}`)
+    await api.get(`/esb/chapters/${id}`)
     .then(response =>{
       setTitle(response.data.title)
       setText(response.data.text)
@@ -55,7 +55,7 @@ export default function EditorPage(props) {
   }
 
   async function updateChapter(){
-    await api.put(`/chapters/${id}`,chapterObj,{headers:{
+    await api.put(`/esb/chapters/${id}`,chapterObj,{headers:{
       token
     }})
     .then(response=>{
