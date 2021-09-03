@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     await api.post('/users/auth',userObj)
       .then(response=>{
-        localStorage.setItem('authToken',response.data.token)
+        localStorage.setItem('authToken',response.data.response.token)
         history.push('/')
       })
       .catch(err=>{
