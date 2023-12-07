@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import api from "./utils/api";
 
@@ -9,8 +9,8 @@ import EditorPage from "./pages/Editor";
 import CreatorPage from "./pages/Creator";
 import LoginPage from "./pages/Login";
 
-export default function Routes() {
-  const history = useHistory();
+export default function Navigation() {
+  const navigate = useNavigate();
   const [loaded, setLoaded] = React.useState(false);
   function getToken() {
     if (loaded) return;
@@ -19,18 +19,18 @@ export default function Routes() {
       setLoaded(true);
       api.defaults.headers["Authorization"] = `Bearer ${t.toString()}`;
     } else {
-      history.push("/login");
+      navigate("/login");
     }
   }
-  React.useLayoutEffect(getToken, [history, loaded]);
+  React.useLayoutEffect(getToken, [loaded]);
   return (
     <BrowserRouter>
-      <Switch>
+      <Routes>
         <Route path="/" exact component={MainPage} />
         <Route path="/edit" component={EditorPage} />
         <Route path="/create" component={CreatorPage} />
         <Route path="/login" component={LoginPage} />
-      </Switch>
+      </Routes>
     </BrowserRouter>
   );
 }

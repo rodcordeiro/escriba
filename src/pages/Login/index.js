@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 import Header from "../../components/Header";
@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -26,14 +26,14 @@ export default function LoginPage() {
         api.defaults.headers[
           "Authorization"
         ] = `Bearer ${response.data.accessToken}`;
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   }
   function goToMainPage() {
-    history.push("/edit");
+    navigate("/edit");
   }
 
   return (

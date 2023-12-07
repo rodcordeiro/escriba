@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -14,7 +14,7 @@ export default function EditorPage(props) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [chapterObj, setChapterObj] = useState({ title, text });
-  const history = useHistory();
+  const navigate = useNavigate();
 
   if (!status) {
     setStatus(true);
@@ -46,7 +46,7 @@ export default function EditorPage(props) {
       .put(`/v1/posts/${id}`, chapterObj)
       .then((response) => {
         alert(`Capítulo ${title} atualizado`);
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         throw new Error(err);

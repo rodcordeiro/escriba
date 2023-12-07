@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import "./index.css";
 
@@ -10,7 +10,7 @@ import api from "../../utils/api";
 export default function MainPage() {
   const [state, setState] = useState(false);
   const [id, setId] = useState(false);
-  const history = useHistory();
+  const navigate= useNavigate();
   const [chapters, setChapters] = useState([]);
   const [chapter, setChapter] = useState({
     title: "Escriba",
@@ -35,7 +35,7 @@ export default function MainPage() {
       if (t) {
         api.defaults.headers["Authorization"] = `Bearer ${t.toString()}`;
       } else {
-        history.push("/login");
+        navigate("/login");
       }
     }
   }
@@ -62,11 +62,11 @@ export default function MainPage() {
       .catch((error) => console.log(error));
   }
   function goToCreatePage() {
-    history.push("/create");
+    navigate("/create");
   }
   function goToEditPage(id) {
     if (!id) return;
-    history.push("/edit", { chapterId: id });
+    navigate("/edit", { chapterId: id });
   }
   async function handleDeleteChapter(id) {
     if (!id) return;

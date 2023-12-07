@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -15,7 +15,7 @@ export default function CreatorPage(props) {
     title,
     text,
   });
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setChapterObj({
@@ -29,7 +29,7 @@ export default function CreatorPage(props) {
       .post("/v1/posts", chapterObj)
       .then((response) => {
         alert(`Capítulo ${response.data.title} criado.`);
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => {
         throw new Error(err);
