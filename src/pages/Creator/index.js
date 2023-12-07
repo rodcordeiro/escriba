@@ -28,7 +28,7 @@ export default function CreatorPage(props) {
     await api
       .post("/v1/posts", chapterObj)
       .then((response) => {
-        alert(`Capítulo ${response.data.chapter.title} criado.`);
+        alert(`Capítulo ${response.data.title} criado.`);
         history.push("/");
       })
       .catch((err) => {

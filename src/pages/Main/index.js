@@ -33,7 +33,7 @@ export default function MainPage() {
       setState(true);
       let t = localStorage.getItem("authToken");
       if (t) {
-        api.defaults.headers["Authorization"] = t;
+        api.defaults.headers["Authorization"] = `Bearer ${t.toString()}`;
       } else {
         history.push("/login");
       }

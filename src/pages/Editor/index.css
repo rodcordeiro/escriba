@@ -24,7 +24,9 @@
 .editor{
     width:90%;
     margin: 20px auto;
+	color:  #f4f4f4;
 }
+
 
 .titleInput,.titleInput:focus,.titleInput:active{
     padding: 5px 10px;
@@ -40,5 +42,5 @@
 
 .ck-content{
 	min-height:400px;
-	color: #181818;
+	color: #f3f3f3;
 }

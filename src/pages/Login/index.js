@@ -22,8 +22,10 @@ export default function LoginPage() {
     await api
       .post("/v1/auth/login", userObj)
       .then((response) => {
-        localStorage.setItem("authToken", response.data.token);
-        api.defaults.headers["Authorization"] = response.data.accessToken;
+        localStorage.setItem("authToken", response.data.accessToken);
+        api.defaults.headers[
+          "Authorization"
+        ] = `Bearer ${response.data.accessToken}`;
         history.push("/");
       })
       .catch((err) => {
