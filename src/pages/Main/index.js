@@ -106,7 +106,9 @@ export default function MainPage() {
         <FiEdit
           size={25}
           className="edit-icon"
-          onClick={() => goToEditPage(id)}
+          onClick={() =>
+            id ? goToEditPage(id) : alert("Selecione um capítulo antes")
+          }
         />
         <FiTrash
           size={25}
