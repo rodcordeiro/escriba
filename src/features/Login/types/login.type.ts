@@ -1,8 +1,14 @@
 import * as z from 'zod';
 
-const loginSchema = z.object({
+export const loginSchema = z.object({
   username: z.string().min(2).max(50),
   password: z.string(),
 });
 
-export { loginSchema };
+export type LoginResponse = {
+  accessToken: string;
+  expires: number;
+  refreshToken: string;
+  authenticated: boolean;
+};
+

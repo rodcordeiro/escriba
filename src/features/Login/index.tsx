@@ -14,12 +14,13 @@ import {
 import { Input } from '@/components/ui/input';
 
 import { useLoginHook } from './hooks/login.hook';
+import { Loading } from '@/components/layout/loading';
 
 const LoginScreen: React.FC = () => {
   const { form, loading, onSubmit } = useLoginHook();
   return (
     <div className="container w-full flex  justify-center h-screen py-20 ">
-      <div className="w-1/4 flex flex-col align-middle">
+      <div className="w-full md:w-1/4  flex flex-col align-middle">
         <h1 className="text-center text-2xl mb-10">Bem vindo ao Escriba!</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -30,7 +31,11 @@ const LoginScreen: React.FC = () => {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Username" {...field}  className='bg-transparent '/>
+                    <Input
+                      placeholder="Username"
+                      {...field}
+                      className="bg-transparent focus:border-none"
+                    />
                   </FormControl>
 
                   <FormMessage />
@@ -44,14 +49,20 @@ const LoginScreen: React.FC = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="Password" type="password" {...field} className='bg-transparent'/>
+                    <Input
+                      placeholder="Password"
+                      type="password"
+                      {...field}
+                      className="bg-transparent"
+                    />
                   </FormControl>
 
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button className="w-full" type="submit">
+            <Button className="w-full" type="submit" disabled={loading}>
+              {loading && <Loading />}
               Submit
             </Button>
           </form>

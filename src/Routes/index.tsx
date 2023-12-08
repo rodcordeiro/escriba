@@ -7,8 +7,10 @@ import {
 import { Layout } from './layout';
 import { useAuthState } from '@/stores/auth.store';
 
-const HomeScreen = React.lazy(() => import('@/features/Home'));
 const LoginScreen = React.lazy(() => import('@/features/Login'));
+const HomeScreen = React.lazy(() => import('@/features/Home'));
+const CreateScreen = React.lazy(() => import('@/features/Create'));
+const EditScreen = React.lazy(() => import('@/features/Edit'));
 
 export const Routes = () => {
   const { auth } = useAuthState();
@@ -22,6 +24,14 @@ export const Routes = () => {
         {
           path: '/',
           element: <HomeScreen />,
+        },
+        {
+          path: '/post',
+          element: <CreateScreen />,
+        },
+        {
+          path: '/post/:id?',
+          element: <EditScreen />,
         },
       ],
     },

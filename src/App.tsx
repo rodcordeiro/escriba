@@ -1,7 +1,13 @@
 import { Routes } from './Routes';
+import { Toaster } from './components/ui/toaster';
 
 function App() {
-  return <Routes />;
+  return (
+    <>
+      <Toaster />
+      <Routes />
+    </>
+  );
 }
 
 export default App;
