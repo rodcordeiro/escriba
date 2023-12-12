@@ -1,1 +1,0 @@
-import{j as e}from"./index-8CTgCBag.js";const r=({rightComponent:s})=>e.jsxs("div",{className:"container w-screen px-10 py-5 bg-zinc-950 flex flex-row justify-between ",children:[e.jsx("h2",{className:"text-base antialiased",children:"Escriba"}),e.jsx("div",{children:s&&s()})]});export{r as H};
