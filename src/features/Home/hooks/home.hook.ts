@@ -6,6 +6,7 @@ import { retry } from '@/utils/retry.util';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from '@/stores/auth.store';
+import { useChapterState } from '@/stores/chapter.store';
 
 const DEFAULT_CHAPTER = {
   id: 'null',
@@ -31,7 +32,9 @@ export function useHomeHook() {
     if (chapterElement) chapterElement.innerHTML = chapter.text;
   }
 
-  React.useEffect(() => handleChapterText(selectedChapter), [selectedChapter]);
+  React.useEffect(() => {
+    handleChapterText(selectedChapter);
+  }, [selectedChapter]);
 
   React.useLayoutEffect(() => {
     retry(async () => {

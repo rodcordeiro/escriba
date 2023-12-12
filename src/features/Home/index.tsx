@@ -30,7 +30,7 @@ const HomeScreen = () => {
             <div>
               <FiPlusCircle
                 className="relative invisible md:visible -top-3"
-                onClick={() => navigate('/post')}
+                onClick={() => setTimeout(() => navigate('/post'), 200)}
               />
             </div>
           </>
@@ -55,6 +55,15 @@ const HomeScreen = () => {
                   <h3>{chapter.title}</h3>
                 </div>
               ))}
+              <div
+                className="container py-5 bg-violet-800  rounded-md absolute bottom-10 right-10  w-fit"
+                onClick={() => {
+                  setOpen(false);
+                  setTimeout(() => navigate('/post'), 200);
+                }}
+              >
+                <h3>Criar um novo capítulo</h3>
+              </div>
             </SheetHeader>
           </SheetContent>
           {chapters?.map(chapter => (
@@ -71,7 +80,9 @@ const HomeScreen = () => {
             {selectedChapter.id !== 'null' && (
               <FiEdit2
                 className=""
-                onClick={() => navigate(`/post/${selectedChapter.id}`)}
+                onClick={() =>
+                  setTimeout(() => navigate(`/post/${selectedChapter.id}`), 200)
+                }
               />
             )}
             <h1 className="text-2xl pl-10 ">{selectedChapter.title}</h1>
