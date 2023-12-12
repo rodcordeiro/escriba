@@ -5,7 +5,7 @@ export const envSchema = z.object({
     .union([z.literal('dev'), z.literal('prod')])
     .optional()
     .default('dev'),
-  VITE_API_URL: z.string().default('http://localhost:3333/api'),
+  VITE_API_URL: z.string().default('http://localhost:3333'),
 });
 
 export type Env = z.infer<typeof envSchema>;
