@@ -1,4 +1,4 @@
-import { SpeedInsights } from '@vercel/speed-insights/React';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { Routes } from './Routes';
 import { Toaster } from './components/ui/toaster';

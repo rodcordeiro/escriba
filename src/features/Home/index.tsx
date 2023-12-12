@@ -1,7 +1,6 @@
 import { FiMenu, FiPlusCircle, FiEdit2 } from 'react-icons/fi';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Loading } from '@/components/layout/loading';
 import {
   Sheet,
   SheetContent,
@@ -9,10 +8,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { Header } from '@/components/layout/header';
 
 import { useHomeHook } from './hooks/home.hook';
 import './styles.css';
-import { Header } from '@/components/layout/header';
 import { useNavigate } from 'react-router-dom';
 
 const HomeScreen = () => {

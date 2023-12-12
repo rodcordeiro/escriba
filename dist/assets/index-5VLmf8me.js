@@ -1,0 +1,1 @@
+import{q as e,j as s}from"./index-8CTgCBag.js";import{H as o}from"./index-0zwQKQKJ.js";const a=()=>{const{id:r}=e();return console.log({id:r}),s.jsxs("div",{children:[s.jsx(o,{}),s.jsx("h1",{children:"Edit post"})]})};export{a as default};

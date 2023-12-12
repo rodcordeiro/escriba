@@ -11,4 +11,3 @@ export type LoginResponse = {
   refreshToken: string;
   authenticated: boolean;
 };
-
